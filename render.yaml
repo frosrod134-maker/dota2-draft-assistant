@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: dota2-draft-assistant
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: ENABLE_SSH_TUNNEL
+        value: "false"
+      - key: BOT_TOKEN
+        sync: false
